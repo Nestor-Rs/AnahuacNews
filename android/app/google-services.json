@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "354182993701",
+    "project_id": "anahuacnews-dd9c0",
+    "storage_bucket": "anahuacnews-dd9c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:354182993701:android:c1878c848806e6b5b96ccc",
+        "android_client_info": {
+          "package_name": "com.example.anahuac_news"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "354182993701-kubmo17r931ki9hj8vg45944kk4htnjm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFG_fIeGjyxTcPhge2PKTokwCIXYrNGGA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "354182993701-kubmo17r931ki9hj8vg45944kk4htnjm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "354182993701-22g97a21l1bfljcvl1kptk43nhaanvcg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.anahuacNews"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
