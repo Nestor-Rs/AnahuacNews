@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
-TextStyle titleStyle() {
-  return TextStyle(fontWeight: FontWeight.bold, fontSize: 30);
+ButtonStyle redButton() {
+  return ButtonStyle(
+      backgroundColor: MaterialStatePropertyAll<Color>(Colors.red));
 }
 
-TextStyle textStyle() {
-  return TextStyle(fontSize: 20);
+ButtonStyle normalButton() {
+  return ButtonStyle();
+}
+
+ButtonStyle redTextButton() {
+  return TextButton.styleFrom(foregroundColor: Colors.red);
 }

@@ -1,15 +1,10 @@
 import 'package:anahuac_news/compoentes/estilos/themes.dart';
 import 'package:flutter/material.dart';
 
-ButtonStyle redButton() {
-  return ButtonStyle(
-      backgroundColor: MaterialStatePropertyAll<Color>(Colors.red));
+TextStyle titleStyle() {
+  return TextStyle(fontWeight: FontWeight.bold, fontSize: 30);
 }
 
-ButtonStyle normalButton() {
-  return ButtonStyle();
-}
-
-ButtonStyle redTextButton() {
-  return TextButton.styleFrom(foregroundColor: Colors.red);
+TextStyle textStyle() {
+  return TextStyle(fontSize: 20);
 }
