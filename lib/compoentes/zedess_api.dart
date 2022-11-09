@@ -19,15 +19,27 @@ ElevatedButton buttonElevate(String label, final action, ButtonStyle style) {
 }
 
 OutlinedButton buttonOutLined(String label, final action, ButtonStyle style) {
-  return OutlinedButton(onPressed: action, child: Text(label), style: style,);
+  return OutlinedButton(
+    onPressed: action,
+    child: Text(label),
+    style: style,
+  );
 }
 
 TextButton buttonText(String label, final action, ButtonStyle style) {
-  return TextButton(onPressed: action, child: Text(label), style: style,);
+  return TextButton(
+    onPressed: action,
+    child: Text(label),
+    style: style,
+  );
 }
 
 IconButton buttonIcon(Icon icon, final action, ButtonStyle style) {
-  return IconButton(onPressed: action, icon: icon,style: style,);
+  return IconButton(
+    onPressed: action,
+    icon: icon,
+    style: style,
+  );
 }
 
 Container container(Widget myWidget) {
