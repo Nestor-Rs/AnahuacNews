@@ -4,6 +4,7 @@ import 'package:anahuac_news/compoentes/estilos/style_text.dart';
 import 'package:anahuac_news/compoentes/estilos/themes.dart';
 import 'package:anahuac_news/compoentes/funtions.dart';
 
+// ------------------------------Login------------------------------
 class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -19,18 +20,18 @@ class Login extends StatelessWidget {
           )),
           container(textImput('Usuario', false)),
           container(textImput('Contrasela', true)),
-          container(buttonElevate('Iniciar sescion', () {
-            changeScreen(context, Test());
-          }, normalButton())),
+          container(buttonElevate('Iniciar sescion', () {}, normalButton())),
           container(buttonOutLined('Registrarse', null, normalButton())),
-          container(buttonText('Olvide mi contraseña', () {}, normalButton())),
+          container(buttonText('Olvide mi contraseña', () {
+            changeScreen(context, RecuperarContrasena());
+          }, normalButton())),
         ]),
       ),
     );
   }
 }
-
-class Test extends StatelessWidget {
+//------------------------------Informacion------------------------------
+class Informacion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,12 +41,40 @@ class Test extends StatelessWidget {
       body: Center(
         child: Column(children: <Widget>[
           container(Text(
-            'Login Anahuac News',
+            'Informacion de aplicacion',
             style: titleStyle(),
           )),
-          container(textImput('Usuario', false)),
+          container(Text(
+            "La siguiente aplicacion se cuentra bajo la licencia GNU. \n Por: \n Nestor Rodriguez Salgado \n Alonso Perez Flores",
+            style: textStyle(),
+          )),
         ]),
       ),
     );
   }
 }
+
+//------------------------------RecuperarContraseña------------------------------
+class RecuperarContrasena extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Anahuac News'),
+      ),
+      body: Center(
+        child: Column(children: <Widget>[
+          container(Text(
+            'Recupera tu contraseña',
+            style: titleStyle(),
+          )),
+          container(textImput('correo electronico', false)),
+          container(
+              buttonElevate('Recuperar contraseña', () {}, normalButton())),
+        ]),
+      ),
+    );
+  }
+}
+
+//------------------------------Home------------------------------
