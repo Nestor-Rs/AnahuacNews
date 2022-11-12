@@ -45,7 +45,7 @@ IconButton buttonIcon(Icon icon, final action, ButtonStyle style) {
 Container container(Widget myWidget) {
   return Container(
     alignment: Alignment.center,
-    padding: const EdgeInsets.all(20),
+    padding: const EdgeInsets.all(15),
     child: myWidget,
   );
 }

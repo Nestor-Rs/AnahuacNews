@@ -13,7 +13,7 @@ class Login extends StatelessWidget {
         title: Text('Anahuac News'),
       ),
       body: Center(
-        child: Column(children: <Widget>[
+        child: ListView(children: <Widget>[
           container(Text(
             'Login Anahuac News',
             style: titleStyle(),
@@ -30,6 +30,7 @@ class Login extends StatelessWidget {
     );
   }
 }
+
 //------------------------------Informacion------------------------------
 class Informacion extends StatelessWidget {
   @override
@@ -39,7 +40,7 @@ class Informacion extends StatelessWidget {
         title: Text('Anahuac News'),
       ),
       body: Center(
-        child: Column(children: <Widget>[
+        child: ListView(children: <Widget>[
           container(Text(
             'Informacion de aplicacion',
             style: titleStyle(),
@@ -63,7 +64,7 @@ class RecuperarContrasena extends StatelessWidget {
         title: Text('Anahuac News'),
       ),
       body: Center(
-        child: Column(children: <Widget>[
+        child: ListView(children: <Widget>[
           container(Text(
             'Recupera tu contraseña',
             style: titleStyle(),
