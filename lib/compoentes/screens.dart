@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:anahuac_news/compoentes/zedess_api.dart';
 import 'package:anahuac_news/compoentes/estilos/style_text.dart';
@@ -20,7 +21,10 @@ class Login extends StatelessWidget {
           )),
           container(textImput('Usuario', false)),
           container(textImput('Contrasela', true)),
-          container(buttonElevate('Iniciar sescion', () {}, normalButton())),
+          //----
+          container(buttonElevate('Iniciar sescion', () {
+            changeScreen(context, Home(), 2);
+          }, normalButton())),
           //----
           container(buttonOutLined('Registrarse', () {
             changeScreen(context, Registrar(), 1);
@@ -84,8 +88,10 @@ class RecuperarContrasena extends StatelessWidget {
 
 //------------------------------Registrarse------------------------------
 class Registrar extends StatelessWidget {
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         title: Text('Anahuac News'),
@@ -107,3 +113,16 @@ class Registrar extends StatelessWidget {
 }
 
 //------------------------------Home------------------------------
+class Home extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Anahuac News'),
+      ),
+      body: Center(
+        child: ListView(children: <Widget>[]),
+      ),
+    );
+  }
+}
