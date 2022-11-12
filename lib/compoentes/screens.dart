@@ -91,7 +91,6 @@ class Registrar extends StatelessWidget {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(
         title: Text('Anahuac News'),
@@ -121,7 +120,7 @@ class Home extends StatelessWidget {
         title: Text('Anahuac News'),
       ),
       body: Center(
-        child: ListView(children: <Widget>[]),
+        child: ListView(children: <Widget>[outLineCard()]),
       ),
     );
   }

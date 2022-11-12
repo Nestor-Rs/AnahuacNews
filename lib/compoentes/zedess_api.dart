@@ -1,3 +1,4 @@
+import 'package:anahuac_news/compoentes/estilos/style_text.dart';
 import 'package:flutter/material.dart';
 
 TextField textImput(String label, bool segurity) {
@@ -47,5 +48,18 @@ Container container(Widget myWidget) {
     alignment: Alignment.center,
     padding: const EdgeInsets.all(15),
     child: myWidget,
+  );
+}
+
+Card outLineCard() {
+  return new Card(
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+    elevation: 10,
+    child: Column(
+      children: <Widget>[
+        ListTile(title: Text('Titulo'),),
+        Text('Contenido de la tarjeta',style: textStyle(),)
+      ],
+    ),
   );
 }
