@@ -21,9 +21,13 @@ class Login extends StatelessWidget {
           container(textImput('Usuario', false)),
           container(textImput('Contrasela', true)),
           container(buttonElevate('Iniciar sescion', () {}, normalButton())),
-          container(buttonOutLined('Registrarse', null, normalButton())),
+          //----
+          container(buttonOutLined('Registrarse', () {
+            changeScreen(context, Registrar(), 1);
+          }, normalButton())),
+          //----
           container(buttonText('Olvide mi contraseña', () {
-            changeScreen(context, RecuperarContrasena());
+            changeScreen(context, RecuperarContrasena(), 1);
           }, normalButton())),
         ]),
       ),
@@ -72,6 +76,30 @@ class RecuperarContrasena extends StatelessWidget {
           container(textImput('correo electronico', false)),
           container(
               buttonElevate('Recuperar contraseña', () {}, normalButton())),
+        ]),
+      ),
+    );
+  }
+}
+
+//------------------------------Registrarse------------------------------
+class Registrar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Anahuac News'),
+      ),
+      body: Center(
+        child: ListView(children: <Widget>[
+          container(Text(
+            'Recupera tu contraseña',
+            style: titleStyle(),
+          )),
+          container(textImput('Correo Anahuac', false)),
+          container(textImput('Contraseña', true)),
+          container(textImput('Repite contraseña', true)),
+          container(buttonElevate('Registrarse', () {}, normalButton())),
         ]),
       ),
     );
