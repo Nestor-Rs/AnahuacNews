@@ -121,7 +121,8 @@ class Home extends StatelessWidget {
       ),
       body: Center(
         child: ListView(children: <Widget>[
-          outLineCard('Titulo de prueba', 'Aqui va el contenido')
+          outLineCard('Titulo de prueba', 'Aqui va el contenido',
+              'https://yt3.ggpht.com/ytc/AMLnZu8bmT1HUchRXoBXQOr9xzEnrl3l41eSSvwjUhtCPg=s900-c-k-c0x00ffffff-no-rj')
         ]),
       ),
     );

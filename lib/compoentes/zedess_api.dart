@@ -51,7 +51,13 @@ Container container(Widget myWidget) {
   );
 }
 
-Card outLineCard(String titulo,String contenido) {
+Image imagen(String imagen) {
+  return Image(
+    image: NetworkImage(imagen),
+  );
+}
+
+Card outLineCard(String titulo, String contenido, String img) {
   return new Card(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
     elevation: 10,
@@ -66,7 +72,8 @@ Card outLineCard(String titulo,String contenido) {
         container(Text(
           contenido,
           style: textStyle(),
-        ))
+        )),
+        container(imagen(img))
       ],
     ),
   );
