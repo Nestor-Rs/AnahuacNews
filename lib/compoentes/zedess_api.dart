@@ -51,14 +51,22 @@ Container container(Widget myWidget) {
   );
 }
 
-Card outLineCard() {
+Card outLineCard(String titulo,String contenido) {
   return new Card(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
     elevation: 10,
     child: Column(
       children: <Widget>[
-        ListTile(title: Text('Titulo'),),
-        Text('Contenido de la tarjeta',style: textStyle(),)
+        ListTile(
+          title: Text(
+            titulo,
+            style: titleStyle(),
+          ),
+        ),
+        container(Text(
+          contenido,
+          style: textStyle(),
+        ))
       ],
     ),
   );

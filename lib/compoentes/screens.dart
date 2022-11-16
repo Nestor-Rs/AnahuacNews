@@ -120,7 +120,9 @@ class Home extends StatelessWidget {
         title: Text('Anahuac News'),
       ),
       body: Center(
-        child: ListView(children: <Widget>[outLineCard()]),
+        child: ListView(children: <Widget>[
+          outLineCard('Titulo de prueba', 'Aqui va el contenido')
+        ]),
       ),
     );
   }
