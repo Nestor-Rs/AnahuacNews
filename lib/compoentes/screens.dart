@@ -7,12 +7,18 @@ import 'package:anahuac_news/compoentes/funtions.dart';
 
 // ------------------------------Login------------------------------
 class Login extends StatelessWidget {
+  GlobalKey<FormState> formKey = new GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Anahuac News'),
       ),
+      key: formKey,
+      /*
+      appBar: AppBar(
+        title: Text('Anahuac News'),
+      ),*/
       body: Center(
         child: ListView(children: <Widget>[
           container(Text(
@@ -20,10 +26,12 @@ class Login extends StatelessWidget {
             style: titleStyle(),
           )),
           container(textImput('Usuario', false)),
-          container(textImput('Contrasela', true)),
+          container(textImput('Contraseña', true)),
           //----
           container(buttonElevate('Iniciar sescion', () {
+            //if(formKey.currentState.validate()){
             changeScreen(context, Home(), 2);
+            //}
           }, normalButton())),
           //----
           container(buttonOutLined('Registrarse', () {
@@ -116,8 +124,12 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Anahuac News'),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          changeScreen(context, Informacion(), 1);
+        },
+        backgroundColor: Colors.amber,
+        child: const Icon(Icons.perm_device_info_outlined),
       ),
       body: Center(
         child: ListView(children: <Widget>[

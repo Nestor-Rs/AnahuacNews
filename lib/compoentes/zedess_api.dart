@@ -1,13 +1,15 @@
 import 'package:anahuac_news/compoentes/estilos/style_text.dart';
+import 'package:anahuac_news/compoentes/funtions.dart';
 import 'package:flutter/material.dart';
 
-TextField textImput(String label, bool segurity) {
-  return new TextField(
+TextFormField textImput(String label, bool segurity) {
+  return new TextFormField(
     obscureText: segurity,
     decoration: InputDecoration(
       border: OutlineInputBorder(),
       labelText: label,
     ),
+    //validator: validate,
   );
 }
 

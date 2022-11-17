@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 void changeScreen(
@@ -10,9 +8,17 @@ void changeScreen(
       break;
     case 2:
       Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: ((context)=> screen)),
+        MaterialPageRoute(builder: ((context) => screen)),
         ModalRoute.withName('/'),
-        );
+      );
       break;
+  }
+}
+
+String validate(String value) {
+  if (value.length == 0) {
+    return 'Por favor ingrese un formato valido';
+  } else {
+    return '';
   }
 }
