@@ -54,9 +54,15 @@ Container container(Widget myWidget) {
 }
 
 Image imagen(String imagen) {
-  return Image(
-    image: NetworkImage(imagen),
-  );
+  if (imagen.isEmpty) {
+    return Image(
+        image: NetworkImage(
+            'https://yt3.ggpht.com/ytc/AMLnZu8bmT1HUchRXoBXQOr9xzEnrl3l41eSSvwjUhtCPg=s900-c-k-c0x00ffffff-no-rj'));
+  } else {
+    return Image(
+      image: NetworkImage(imagen),
+    );
+  }
 }
 
 Card outLineCard(String titulo, String contenido, String img) {

@@ -4,12 +4,18 @@ import 'package:anahuac_news/compoentes/zedess_api.dart';
 import 'package:anahuac_news/compoentes/estilos/style_text.dart';
 import 'package:anahuac_news/compoentes/estilos/themes.dart';
 import 'package:anahuac_news/compoentes/funtions.dart';
+import 'package:anahuac_news/compoentes/objetos/noticia.dart';
+
+// ------------------------------Variables------------------------------
+List<Card> noticias = [];
+FirebaseFirestore db = FirebaseFirestore.instance;
 
 // ------------------------------Login------------------------------
 class Login extends StatelessWidget {
   GlobalKey<FormState> formKey = new GlobalKey();
   @override
   Widget build(BuildContext context) {
+    noticias = getNews();
     return Scaffold(
       appBar: AppBar(
         title: Text('Anahuac News'),
@@ -132,10 +138,7 @@ class Home extends StatelessWidget {
         child: const Icon(Icons.perm_device_info_outlined),
       ),
       body: Center(
-        child: ListView(children: <Widget>[
-          outLineCard('Titulo de prueba', 'Aqui va el contenido',
-              'https://yt3.ggpht.com/ytc/AMLnZu8bmT1HUchRXoBXQOr9xzEnrl3l41eSSvwjUhtCPg=s900-c-k-c0x00ffffff-no-rj')
-        ]),
+        child: ListView(children: noticias),
       ),
     );
   }
