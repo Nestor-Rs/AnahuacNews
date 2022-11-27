@@ -2,8 +2,9 @@ import 'package:anahuac_news/compoentes/estilos/style_text.dart';
 import 'package:anahuac_news/compoentes/funtions.dart';
 import 'package:flutter/material.dart';
 
-TextFormField textImput(String label, bool segurity) {
+TextFormField textImput(String label, bool segurity, TextEditingController controller) {
   return new TextFormField(
+    controller: controller,
     obscureText: segurity,
     decoration: InputDecoration(
       border: OutlineInputBorder(),

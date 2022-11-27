@@ -5,7 +5,7 @@ import 'package:anahuac_news/compoentes/zedess_api.dart';
 import 'package:anahuac_news/compoentes/estilos/style_text.dart';
 import 'package:anahuac_news/compoentes/estilos/themes.dart';
 import 'package:anahuac_news/compoentes/funtions.dart';
-import 'package:anahuac_news/compoentes/objetos/noticia.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 // ------------------------------Variables------------------------------
 List<Card> noticias = [];
@@ -14,6 +14,8 @@ FirebaseFirestore db = FirebaseFirestore.instance;
 // ------------------------------Login------------------------------
 class Login extends StatelessWidget {
   GlobalKey<FormState> formKey = new GlobalKey();
+  TextEditingController emailTextController = TextEditingController();
+  TextEditingController passwordTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     noticias = getNews();
@@ -32,13 +34,28 @@ class Login extends StatelessWidget {
             'Login Anahuac News',
             style: titleStyle(),
           )),
-          container(textImput('Usuario', false)),
-          container(textImput('Contraseña', true)),
+          container(textImput('Usuario', false, emailTextController)),
+          container(textImput('Contraseña', true, passwordTextController)),
           //----
-          container(buttonElevate('Iniciar sescion', () {
-            //if(formKey.currentState.validate()){
-            changeScreen(context, Home(), 2);
-            //}
+          container(buttonElevate('Iniciar sesión', () {
+            FirebaseAuth.instance.signInWithEmailAndPassword(
+                email: emailTextController.text,
+                password: passwordTextController.text)
+            .then((value) {
+              changeScreen(context, Home(), 2);
+              Fluttertoast.showToast(
+                  msg: "Inicio de sesión exitoso",
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.BOTTOM,
+                  fontSize: 12.0);
+            })
+            .onError((error, stackTrace) {
+              Fluttertoast.showToast(
+                  msg: "No se pudo iniciar la sesión, intente de nuevo.",
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.BOTTOM,
+                  fontSize: 12.0);
+            });
           }, normalButton())),
           //----
           container(buttonOutLined('Registrarse', () {
@@ -69,9 +86,20 @@ class Informacion extends StatelessWidget {
             style: titleStyle(),
           )),
           container(Text(
-            "La siguiente aplicacion se cuentra bajo la licencia GNU. \n Por: \n Nestor Rodriguez Salgado \n Alonso Perez Flores",
+            "La siguiente aplicación se encuentra bajo la licencia GNU. \n Por: \n Nestor Rodriguez Salgado \n Alonso Perez Flores",
             style: textStyle(),
           )),
+          container(buttonElevate("Cerrar Sesión", (){
+            FirebaseAuth.instance.signOut().then((value) {
+              changeScreen(context, Login(), 2);
+              Fluttertoast.showToast(
+                  msg: "Se cerró la sesión.",
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.BOTTOM,
+                  fontSize: 12.0);
+            });
+          },
+              normalButton())),
         ]),
       ),
     );
@@ -80,6 +108,7 @@ class Informacion extends StatelessWidget {
 
 //------------------------------RecuperarContraseña------------------------------
 class RecuperarContrasena extends StatelessWidget {
+  TextEditingController mailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,9 +121,20 @@ class RecuperarContrasena extends StatelessWidget {
             'Recupera tu contraseña',
             style: titleStyle(),
           )),
-          container(textImput('correo electronico', false)),
+          container(textImput('correo electronico', false, mailController)),
           container(
-              buttonElevate('Recuperar contraseña', () {}, normalButton())),
+              buttonElevate('Recuperar contraseña', () {
+                FirebaseAuth.instance.sendPasswordResetEmail(
+                    email: mailController.text)
+                .then((value) {
+                  changeScreen(context, Login(), 2);
+                  Fluttertoast.showToast(
+                      msg: "Se ha enviado un correo de recuperación.",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.BOTTOM,
+                      fontSize: 12.0);
+                });
+              }, normalButton())),
         ]),
       ),
     );
@@ -104,6 +144,9 @@ class RecuperarContrasena extends StatelessWidget {
 //------------------------------Registrarse------------------------------
 class Registrar extends StatelessWidget {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  TextEditingController mailAnahuac = TextEditingController();
+  TextEditingController contrasennia = TextEditingController();
+  TextEditingController confirmarContra = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,13 +156,40 @@ class Registrar extends StatelessWidget {
       body: Center(
         child: ListView(children: <Widget>[
           container(Text(
-            'Recupera tu contraseña',
+            'Registrate',
             style: titleStyle(),
           )),
-          container(textImput('Correo Anahuac', false)),
-          container(textImput('Contraseña', true)),
-          container(textImput('Repite contraseña', true)),
-          container(buttonElevate('Registrarse', () {}, normalButton())),
+          container(textImput('Correo Anahuac', false, mailAnahuac)),
+          container(textImput('Contraseña', true, contrasennia)),
+          container(textImput('Confirmar contraseña', true, confirmarContra)),
+          container(buttonElevate('Registrarse', () {
+            if(contrasennia.text != confirmarContra.text){
+              return Fluttertoast.showToast(
+                        msg: "Las contraseñas no coinciden.",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                        fontSize: 12.0);
+            }
+            FirebaseAuth.instance.createUserWithEmailAndPassword(
+                email: mailAnahuac.text,
+                password: confirmarContra.text)
+                .then((value) {
+                changeScreen(context, Login(), 2);
+
+                Fluttertoast.showToast(
+                    msg: "Cuenta creada exitosamente.",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    fontSize: 12.0);
+            })
+                .onError((error, stackTrace){
+                    Fluttertoast.showToast(
+                        msg: "Ha ocurrido un error, intente de nuevo.",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                        fontSize: 12.0);
+            });
+          }, normalButton())),
         ]),
       ),
     );
